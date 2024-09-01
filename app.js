@@ -103,6 +103,8 @@ app.all("*",(req,res,next) => {
 
 app.use((err, req, res, next) =>{
     let {statusCode = 505 , message = "Something went Wrong"} = err;
+    console.log(err);
+    
    res.status(statusCode).render("error.ejs",{message});
 });
 
