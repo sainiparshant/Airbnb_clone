@@ -84,14 +84,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get("/demouser", async (req,res) =>{
-//     let fakeUser = new User({
-//         email: "abc1234@gmail.com",
-//         username: "delta-student",
-//     });
-//     let registeredUser = await User.register(fakeUser, "helloworld");
-//     res.send(registeredUser);
-// });
+
 
 app.use("/listings" , listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
@@ -105,7 +98,7 @@ app.use((err, req, res, next) =>{
     let {statusCode = 505 , message = "Something went Wrong"} = err;
     console.log(err);
     
-   res.status(statusCode).render("error.ejs",{message});
+   res.status(statusCode).render("error.ejs",{err});
 });
 
 app.listen(8080, () => {
